@@ -1,0 +1,7 @@
+.oden_error {
+  border: 1px solid red;
+  background-color: #efd6d6;
+  margin: 5px;
+  padding: 5px;
+  display: inline-block;
+}
