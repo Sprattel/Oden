@@ -10,6 +10,14 @@ require_once (CORE_DIR . LIBS_DIR . DS . 'cache.php');
 //error handler
 set_error_handler("error_handler");
 
+
+/**
+ * Using output buffering to include a PHP file into a string
+ * http://php.net/manual/en/function.include.php
+ * 
+ * @return string
+ * @param string $filename
+ */
 function get_include_contents($filename) {
   if(is_file($filename)) {
     ob_start();
