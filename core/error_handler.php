@@ -1,7 +1,8 @@
 <?php
 
 //error handler function
-function error_handler($errno, $errstr, $fileName, $lineNo) {
+function error_handler($errno, $errstr, $fileName, $lineNo)
+{
   echo '
   <style>
     .oden_error {
@@ -13,7 +14,8 @@ function error_handler($errno, $errstr, $fileName, $lineNo) {
     float: left;
   }
   </style>';
-  switch ($errno) {
+  switch ($errno)
+  {
 
       // fatal error. die it.
     case E_USER_ERROR:

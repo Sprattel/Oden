@@ -1,17 +1,27 @@
 <?php
 
-class Controller {
+class OD_Controller
+{
   public $load;
   public $model;
   public $viewData;
   public $elementData;
+  public $config;
+  public $db;
+  
+  function __construct()
+  {
+    $od = &get_instance();
+    //var_dump($od);
+    $this->load = new OD_Load();
+    $this->model = new OD_Model();
 
-  function __construct() {
-    $this->load = new Load();
-    $this->model = new Model();
+    $database = new OD_Database($od->config->get('db_driver'));
+    $this->db = $database->get_instance();
   }
 
-  function __destruct() {
+  function __destruct()
+  {
     unset($this->load);
     unset($this->model);
   }

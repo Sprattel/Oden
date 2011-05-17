@@ -9,9 +9,14 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 ini_set('memory_limit', '64M');
 
+//CP = Class prefix
+define('CP', 'O_');
+
 define('DS', '/');
 
 define('CORE_DIR', DS . 'core');
+define('DB_DIR', CORE_DIR . DS . 'database');
+
 define('APPLICATION_DIR', DS . 'application');
 define('SCRIPT_DIR', DS . 'script');
 define('CSS_DIR', DS . 'css');

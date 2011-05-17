@@ -10,9 +10,9 @@
 </head>
 
 <body>
-<?=
+<?
 
-$this->element('debugbar', array('debugFiles' => $debugFiles, 10))
+//echo $this->element('debugbar', array('debugFiles' => $debugFiles, 10))
 
 ?>
 <h1>Welcome to the Oden framework!</h1>

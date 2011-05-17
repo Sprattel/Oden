@@ -1,10 +1,13 @@
 <?php
 
-class Model {
-  public function load() {
+class OD_Model
+{
+  public function load()
+  {
 
   }
-  function __construct() {
+  function __construct()
+  {
 
   }
 }
