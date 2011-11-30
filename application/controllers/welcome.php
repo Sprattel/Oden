@@ -21,7 +21,7 @@ class Welcome extends OD_Controller
     $user->setPassword("Larsson2");
     
     $user->setAllt(array('hello' => 'world'));
-    $user->setAllt(array('hello' => 'w'));
+    $user->setAllt(array('hello' => 'w', 'foo' => 'bar'));
     
     $user->addItem($katt);
     $user->addItem($Hund);
