@@ -11,7 +11,7 @@ class OD_Controller
   
   function __construct()
   {
-    $od = &get_instance();
+    $od = &Oden::get_instance();
     //var_dump($od);
     $this->load = new OD_Load();
     $this->model = new OD_Model();

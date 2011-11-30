@@ -13,7 +13,7 @@ class OD_MongoDB
   var $db;
   public function __construct()
   {
-    $this->od =&get_instance();
+    $this->od =&Oden::get_instance();
     
     $this->connect($this->od->config->get('db_username'),
                    $this->od->config->get('db_password'),
@@ -28,10 +28,17 @@ class OD_MongoDB
       $this->connect_string = "mongodb://{$username}:{$password}@{$host}:{$port}";   
     else 
       $this->connect_string = "mongodb://{$host}:{$port}";
-      
-    $this->connection = new Mongo($this->connect_string);
+    try {
+      $this->connection = new Mongo($this->connect_string);
+    } catch(MongoConnectionException $e) {
+      throw $e;
+    }
     
     $this->db = $this->connection->{$database};
+  }
+  
+  function getDb() {
+    return $this->db;
   }
 
 }

@@ -5,6 +5,7 @@ class Oden
   var $controller;
   var $config;
   var $router;
+  var $db;
 
   private static $instance;
 
@@ -12,19 +13,22 @@ class Oden
   {
     self::$instance = &$this;
 
-    require_once (CORE_DIR . DS . 'configure.php');
+    require_once (CORE_DIR . 'configure.php');
     $this->config = new OD_Configure();
-    require_once (CONFIGS_DIR . DS . 'config.php');
+    require_once (APPLICATION_DIR . 'configs' . DS . 'config.php');
+    require_once (CORE_DIR . 'magic_methods.php');
+    require_once (CORE_DIR . 'libs' . DS . 'odm.php');    
+    require_once (CORE_DIR . 'database.php');
+    require_once (CORE_DIR . 'load.php');
+    require_once (CORE_DIR . 'model.php');
+    require_once (CORE_DIR . 'controller.php');
+    require_once (CORE_DIR . 'router.php');
+    require_once (CORE_DIR . 'error_handler.php');
 
-    require_once (CORE_DIR . DS . 'database.php');
-    require_once (CORE_DIR . DS . 'load.php');
-    require_once (CORE_DIR . DS . 'model.php');
-    require_once (CORE_DIR . DS . 'controller.php');
-    require_once (CORE_DIR . DS . 'router.php');
-    require_once (CORE_DIR . DS . 'error_handler.php');
-
-    require_once (CORE_DIR . LIBS_DIR . DS . 'cache.php');
-
+    require_once (CORE_DIR . 'libs' . DS . 'cache.php');    
+    $this->db = new OD_Database($this->config->get("db_driver"));
+    new ODM();
+    
     $this->router = new OD_Router();
     set_error_handler("error_handler");
     $this->_loadAndRunController();
@@ -36,7 +40,7 @@ class Oden
     return self::$instance;
   }
 
-  function _loadAndRunController()
+  private function _loadAndRunController()
   {
     if ($this->router->getController() != "")
       $controller = $this->router->getController();
@@ -48,7 +52,7 @@ class Oden
 
     $params = $this->router->getArgs();
 
-    $controllerFile = CONTROLLERS_DIR . DS . $controller . '.php';
+    $controllerFile = APPLICATION_DIR . 'controllers' . DS . $controller . '.php';
 
     include $controllerFile;
 
