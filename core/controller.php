@@ -9,10 +9,9 @@ class OD_Controller
   public $config;
   public $db;
   
-  function __construct()
-  {
+  function __construct()  {
     $od = &Oden::get_instance();
-    //var_dump($od);
+
     $this->load = new OD_Load();
     $this->model = new OD_Model();
 
@@ -20,8 +19,7 @@ class OD_Controller
     $this->db = $database->get_instance();
   }
 
-  function __destruct()
-  {
+  function __destruct() {
     unset($this->load);
     unset($this->model);
   }

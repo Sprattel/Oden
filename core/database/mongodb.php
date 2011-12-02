@@ -9,12 +9,9 @@ class OD_MongoDB
 {
   var $connection;
   var $connect_string;
-  var $od;
   var $db;
-  public function __construct()
-  {
-    $this->od =&Oden::get_instance();
-    
+  public function __construct() {
+
     $this->connect($this->od->config->get('db_username'),
                    $this->od->config->get('db_password'),
                    $this->od->config->get('db_name'),
@@ -23,6 +20,9 @@ class OD_MongoDB
     
   }
   
+  /*
+   * Connect to the database
+   */
   function connect($username, $password, $database, $host, $port) {
     if(!empty($username) && !empty($password))
       $this->connect_string = "mongodb://{$username}:{$password}@{$host}:{$port}";   
@@ -33,10 +33,13 @@ class OD_MongoDB
     } catch(MongoConnectionException $e) {
       throw $e;
     }
-    
+
     $this->db = $this->connection->{$database};
   }
   
+  /*
+   * Return mongoDb
+   */
   function getDb() {
     return $this->db;
   }
