@@ -10,8 +10,10 @@ class OD_MongoDB
   var $connection;
   var $connect_string;
   var $db;
+  var $od;
   public function __construct() {
-
+    $this->od =& Oden::getInstance();
+    
     $this->connect($this->od->config->get('db_username'),
                    $this->od->config->get('db_password'),
                    $this->od->config->get('db_name'),

@@ -33,7 +33,7 @@ class OD_Database
    * Return instance of the database 
    * @return OD_Database
    */
-  public static function &get_instance()
+  public static function &getInstance()
   {    
     return self::$instance;
   }

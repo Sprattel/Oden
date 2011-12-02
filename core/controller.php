@@ -10,13 +10,13 @@ class OD_Controller
   public $db;
   
   function __construct()  {
-    $od = &Oden::get_instance();
+    $od = &Oden::getInstance();
 
     $this->load = new OD_Load();
     $this->model = new OD_Model();
 
     $database = new OD_Database($od->config->get('db_driver'));
-    $this->db = $database->get_instance();
+    $this->db = $database->getInstance();
   }
 
   function __destruct() {

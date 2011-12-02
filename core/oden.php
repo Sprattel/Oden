@@ -6,11 +6,12 @@ class Oden
   var $config;
   var $router;
   var $db;
-
+  var $benchmark;
+  
+  
   private static $instance;
 
-  public function __construct()
-  {
+  public function __construct() {
     self::$instance = &$this;
     
     //Load required core files
@@ -23,6 +24,7 @@ class Oden
     require_once (CORE_DIR . 'load.php');
     require_once (CORE_DIR . 'model.php');
     require_once (CORE_DIR . 'controller.php');
+    require_once (CORE_DIR . 'benchmark.php');
     require_once (CORE_DIR . 'router.php');
     require_once (CORE_DIR . 'errorhandler.php');
     require_once (CORE_DIR . 'libs' . DS . 'cache.php'); 
@@ -44,7 +46,7 @@ class Oden
    * Return instance of Oden 
    * @return Oden
    */
-  public static function &get_instance()
+  public static function &getInstance()
   {
     return self::$instance;
   }

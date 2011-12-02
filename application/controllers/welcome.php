@@ -7,8 +7,9 @@ class Welcome extends OD_Controller
     parent::__construct();
   }
 
-  function index($param1 = null)
-  {
+  function index($param1 = null) {
+    OD_Benchmark::start("fisk");
+    
     $user = new User();
     
     $katt = new Item();    
@@ -26,7 +27,11 @@ class Welcome extends OD_Controller
     $user->addItem($katt);
     $user->addItem($Hund);
     
-    $this->load->view('welcome', array('hello' => 'world', 'debugFiles' =>
-      get_included_files(), 10));
+    OD_Benchmark::End("fisk");
+    
+    $this->load->view('welcome',
+    array('hello' => 'world',
+    'debugFiles' =>get_included_files(),
+    'benchtest' => OD_Benchmark::getTime("fisk"), 10));
   }
 }

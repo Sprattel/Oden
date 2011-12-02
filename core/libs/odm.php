@@ -13,7 +13,7 @@ class ODM {
   private $collection;
   
   function __construct() {
-    $database = &OD_Database::get_instance();
+    $database = &OD_Database::getInstance();
     $this->db = $database->getDb();
   }
   

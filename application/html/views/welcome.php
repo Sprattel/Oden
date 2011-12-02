@@ -25,6 +25,7 @@
     </header>
     <div id="main" role="main">
      <h3>Welcome!</h3>
+     <?=$benchtest?>
     </div>
     <footer>
 
