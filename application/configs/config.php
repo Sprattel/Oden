@@ -15,3 +15,7 @@ $this->config->set('db_port', '27017');
 $this->config->set('db_name', 'oden');
 $this->config->set('db_username', '');
 $this->config->set('db_password', '');
+
+if($this->config->getUser() == 'dev') {
+  
+}
