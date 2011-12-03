@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 
 //CP = Class prefix
-define('CP', 'O_');
+define('CP', 'OD_');
 
 define('DS', DIRECTORY_SEPARATOR );
 

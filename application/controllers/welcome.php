@@ -1,15 +1,14 @@
 <?php
 
-class Welcome extends OD_Controller
-{
-  function __construct()
-  {
+class Welcome extends OD_Controller {
+  function __construct() {
     parent::__construct();
   }
 
   function index($param1 = null) {
-    OD_Benchmark::start("fisk");
     
+    $this->benchmark->start("fisk");
+
     $user = new User();
     
     $katt = new Item();    
@@ -27,11 +26,11 @@ class Welcome extends OD_Controller
     $user->addItem($katt);
     $user->addItem($Hund);
     
-    OD_Benchmark::End("fisk");
+    $this->benchmark->End("fisk");
     
     $this->load->view('welcome',
     array('hello' => 'world',
     'debugFiles' =>get_included_files(),
-    'benchtest' => OD_Benchmark::getTime("fisk"), 10));
+    'benchtest' => $this->benchmark->getTime("fisk"), 10));
   }
 }

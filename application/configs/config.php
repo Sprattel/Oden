@@ -16,6 +16,19 @@ $this->config->set('db_name', 'oden');
 $this->config->set('db_username', '');
 $this->config->set('db_password', '');
 
+
+//Example
+//Dev mode
 if($this->config->getUser() == 'dev') {
-  
+
 }
+
+//Live mode
+if(!$this->config->getUser()) {
+
+}
+
+
+
+
+
